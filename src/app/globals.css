@@ -3,25 +3,70 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    --green: #093545;
+    --white: #fff;
+    --blau: #224957;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    font-family: Montserrat, sans-serif;
+    color: var(--white);
+    background-color: var(--green);
+    background-image: url(../public/bg.png), url(../public/bg_green.png);
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, contain;
+    background-position: bottom, bottom;
+    min-height: 100vh;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px var(--blau) inset;
+    -webkit-text-fill-color: var(--white);
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px var(--blau) inset;
+}
+
+input::placeholder {
+    font-weight: 400;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blau);
+    width: 18px;
+    height: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 18px;
+    height: 17px;
+    border-radius: 5px;
+    transform: scale(0);
+    background-color: var(--green);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    overflow: hidden;
+}
+
+input[type="checkbox"]:checked::before {
+    width: 18px;
+    height: 17px;
+    border-radius: 5px;
+    transform: scale(1);
+    background-color: aquamarine;
+}
+
+input::placeholder {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
 }
