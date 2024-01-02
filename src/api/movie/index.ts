@@ -5,7 +5,9 @@ const getAllMovie = async (id: string, limit = 8, skip = 16) => {
     const movieData = await axiosInstance.get(`${ENDPOINTS.MOVIEFORUSER}${id}?limit=${limit}&skip=${skip}`);
 
     const { data } = movieData;
-    
+
+    console.log(data)
+
     return data;
 }
 
@@ -15,7 +17,7 @@ const addMovie = async (id: string, title: string, year: string, imageUrl: File)
     formData.append('owner', id);
     formData.append('title', title);
     formData.append('year', year);
-    formData.append('imageUrl', imageUrl);
+    formData.append('imageUrl', imageUrl)
 
     try {
         const response = await axiosInstance.post(ENDPOINTS.ADDMOVIE, formData, {
